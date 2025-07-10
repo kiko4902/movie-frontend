@@ -1,0 +1,46 @@
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.login-btn, 
+.register-btn,
+.profile-btn,
+.logout-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.login-btn, 
+.register-btn {
+  background: #4CAF50;
+  color: white;
+}
+
+.login-btn:hover, 
+.register-btn:hover {
+  background: #3e8e41;
+}
+
+.profile-btn {
+  background: #2196F3;
+  color: white;
+}
+
+.profile-btn:hover {
+  background: #0b7dda;
+}
+
+.logout-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #d32f2f;
+}
