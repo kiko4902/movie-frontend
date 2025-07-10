@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://webprojectbackend-production.up.railway.app/movies:3000',
+  baseURL: 'https://webprojectbackend-production.up.railway.app/movies',
 });
 
 api.interceptors.request.use(config => {
