@@ -9,6 +9,12 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(config => {
+  if (config.url.includes('/auth')) {
+    config.headers['X-Requested-With'] = 'XMLHttpRequest';
+  }
+  return config;
+});
+api.interceptors.request.use(config => {
   const session = JSON.parse(localStorage.getItem('supabase_session'));
   if (session?.session?.access_token) {
     config.headers.Authorization = `Bearer ${session.session.access_token}`;
