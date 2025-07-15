@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://webprojectbackend-production.up.railway.app/movies:3000',
+  //baseURL: 'https://webprojectbackend-production.up.railway.app',
+  baseURL: 'http://localhost:3000',
 });
 
 api.interceptors.request.use(config => {
@@ -14,9 +15,15 @@ api.interceptors.request.use(config => {
 
 api.interceptors.response.use(
   response => response,
-  error => {
+  async (error) => {
     if (error.response?.status === 401) {
-      return Promise.reject(error);
+      // Clear auth data
+      localStorage.removeItem('supabase_session');
+      
+      // Redirect to login if in browser
+      if (typeof window !== 'undefined') {
+        window.location.href = '/login?session_expired=true';
+      }
     }
     return Promise.reject(error);
   }

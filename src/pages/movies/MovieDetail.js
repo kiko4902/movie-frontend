@@ -91,40 +91,19 @@ export default function MovieDetail() {
 
   const handleReviewSubmit = async (reviewData) => {
     try {
-      const numericRating = +reviewData.rating;
-      const parsedRating = parseInt(reviewData.rating, 10);
-      const numberRating = Number(reviewData.rating);
-      
-      console.log('Conversion results:', {
-        unaryPlus: { value: numericRating, type: typeof numericRating },
-        parseInt: { value: parsedRating, type: typeof parsedRating },
-        Number: { value: numberRating, type: typeof numberRating }
-      });
-
       const finalRating = Number(reviewData.rating);
       if (isNaN(finalRating)) {
         throw new Error(`Invalid rating value: ${reviewData.rating}`);
       }
 
-      const payload = {
-        rating: Number(reviewData.rating),
-        comment: reviewData.comment
-      };
-
-      console.log('Final payload:', payload);
-      console.log('Payload rating type:', typeof payload.rating);
-
-      console.log('Sending to API...');
       const response = await api.reviews.create(movie.id, {
         rating: finalRating,
         comment: reviewData.comment
       });
 
-      console.log('API response:', response.data);
-
       const newReview = {
         ...response.data,
-        username: user?.email || 'Anonymous',
+        username: response.data.username || user?.email || 'Anonymous',
         user_id: user?.id,
         rating: Number(response.data.rating), 
         created_at: new Date().toISOString()
@@ -367,7 +346,7 @@ export default function MovieDetail() {
                     <>
                       <div className="review-header">
                         <span className="review-author">
-                          {review.username || review.user?.email || 'Anonymous'}
+                          {review.username || 'Anonymous'}
                         </span>
                         <span className="review-rating">⭐ {review.rating}/5</span>
                         {user?.id === review.user_id && (
