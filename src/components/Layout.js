@@ -48,7 +48,7 @@ export default function Layout() {
       </main>
 
       <footer className="app-footer">
-        © {new Date().getFullYear()} Movie App
+        © {new Date().getFullYear()} MovieDB by Kristian Dzoic
       </footer>
     </div>
   );
