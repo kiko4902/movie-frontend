@@ -1,10 +1,19 @@
 import axios from 'axios';
 
 const api = axios.create({
-  //baseURL: 'https://webprojectbackend-production.up.railway.app',
-  baseURL: 'http://localhost:3000',
+  baseURL: 'https://webprojectbackend-production.up.railway.app',
+  withCredentials: true, 
+  headers: {
+    'Content-Type': 'application/json'
+  }
 });
 
+api.interceptors.request.use(config => {
+  if (config.url.includes('/auth')) {
+    config.headers['X-Requested-With'] = 'XMLHttpRequest';
+  }
+  return config;
+});
 api.interceptors.request.use(config => {
   const session = JSON.parse(localStorage.getItem('supabase_session'));
   if (session?.session?.access_token) {
