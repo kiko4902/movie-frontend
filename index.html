@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MovieDB</title>
+    <meta
+      name="description"
+      content="Browse 1,000 top-rated movies, search by title, genre and year, keep a watchlist and write reviews."
+    />
+    <meta name="theme-color" content="#14171c" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MovieDB" />
+    <meta property="og:title" content="MovieDB: browse, save and review top-rated movies" />
+    <meta
+      property="og:description"
+      content="Browse 1,000 top-rated movies, search by title, genre and year, keep a watchlist and write reviews."
+    />
+    <meta property="og:url" content="https://movie-frontend-alpha-six.vercel.app/" />
+    <meta property="og:image" content="https://movie-frontend-alpha-six.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Posters come from here; opening the connection early speeds up the first images. -->
+    <link rel="preconnect" href="https://m.media-amazon.com" crossorigin />
+  </head>
+  <body>
+    <noscript>MovieDB needs JavaScript to run.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
