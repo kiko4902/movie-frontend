@@ -109,7 +109,7 @@ Both are public values that end up in the built JavaScript. Do not put secrets i
 
 `npm test` runs 64 tests across 5 files. They render real pages against a mocked `fetch` and cover the API client (token refresh, expiry, error handling), login, registration and the demo button, route guards, browsing and pagination, search filters and URL syncing, and the review and watchlist flows on the movie page.
 
-CI runs lint, the format check, the tests and a production build on every push and pull request.
+CI runs a dependency audit (failing on high-severity advisories in production dependencies), lint, the format check, the tests and a production build on every push and pull request. CodeQL scans the code on every push, pull request and weekly, and Dependabot opens weekly update pull requests.
 
 ## Deployment
 
